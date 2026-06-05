@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Comments } from './comments';
+import { Comments } from '../comments';
 import { HttpClient } from '@angular/common/http';
-import { Videos } from './videos';
+import { Videos } from '../videos';
 import { Observable } from 'rxjs';
 
 @Injectable({
