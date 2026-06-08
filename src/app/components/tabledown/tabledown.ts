@@ -44,7 +44,7 @@ export class Tabledown {
   comments = input.required<Comments[]>();
 
   downloadJson(name: string = "comentarios.json") {
-    const content = JSON.stringify(this.comments, null, 2);
+    const content = JSON.stringify(this.comments(), null, 2);
     const blob = new Blob([content], { type: "applicattion/json" });
 
     const url = window.URL.createObjectURL(blob);
@@ -62,10 +62,10 @@ export class Tabledown {
     const rows = this.comments().map(c =>[
       c.video_id,
       c.user,
-    `"${String(c.comment ?? '').replace(/"/g, '""')}`
+    `"${String(c.comment ?? '').replace(/"/g, '""')}"`
     ].join(','));
 
-    const csv = [headers.join(','), ...rows].join('/n');
+    const csv = [headers.join(','), ...rows].join('\n');
 
     const blob = new Blob(['\ufeff' + csv], { type: "text/csv;charset=utf-8;" });
 
