@@ -114,13 +114,6 @@ function Table({comments}: { comments: Comment[] }){
   const inicio = (paginaActual - 1) * porPagina;
   const filasVisibles = comments.slice(inicio, inicio + porPagina);
 
-  const rows: any = []
-  comments.forEach((element) => {
-    rows.push(
-      <CommentsRows comment={element}/>
-    );
-  });
-
   return(
     <div className="container mt-4"> 
       <table className="table table-bordered">
@@ -169,15 +162,7 @@ function Table({comments}: { comments: Comment[] }){
   );
 }
 
-function CommentsRows({comment}:  { comment: Comment }){
-  return (
-    <tr>          
-      <td>{comment.video_id}</td>
-      <td>{comment.user}</td>
-      <td>{comment.comment}</td>
-    </tr>
-  );
-}
+
 
 interface Comment {
   video_id: string;
