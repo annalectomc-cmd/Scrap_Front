@@ -23,6 +23,9 @@ function SearchForm({setComments}: any){
   const [load, setLoad] = useState(false);
 
   function sendProfile() {
+    //despliegue
+    //fetch(`/comments?profile=${encodeURIComponent(profile)}`)
+    // desarrollo
     fetch(`http://localhost:5000/comments?profile=${encodeURIComponent(profile)}`)
     .then((response) => response.json())
     .then((data) => {
@@ -141,14 +144,11 @@ function Table({comments}: { comments: Comment[] }){
               Anterior
             </button>
           </li>
-
-          {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(num => (
-            <li key={num} className={`page-item ${paginaActual === num ? 'active' : ''}`}>
-              <button className="page-link" onClick={() => setPaginaActual(num)}>
-                {num}
-              </button>
-            </li>
-          ))}
+          <li className="page-item disabled">
+              <span className="page-link" >
+                Página {paginaActual} de {totalPaginas}
+              </span>
+          </li>
 
           <li className={`page-item ${paginaActual === totalPaginas ? 'disabled' : ''}`}>
             <button className="page-link" onClick={() => setPaginaActual(p => p + 1)}>
