@@ -7,8 +7,16 @@ function App() {
 
   return (
     <>
-      <div>
-        <SearchForm setComments={setComments} />
+      <div className="container-fluid">
+        <div className="row justify-content-center mt-4">
+          <div className="col-6">
+            <div className="card">
+              <div className="card-body">
+                <SearchForm setComments={setComments} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="container mt-4">
         <TableDown comments={comments} />
@@ -37,7 +45,13 @@ function SearchForm({ setComments }: any) {
     fetch(
       `http://localhost:5000/comments?profile=${encodeURIComponent(profile)}&cant=${encodeURIComponent(Number(cant))}&type=${encodeURIComponent(Number(type))}`,
     )
-      .then((response) => response.json())
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+        return data;
+      })
       .then((data) => {
         setComments(data);
         setLoad(false);
@@ -69,7 +83,7 @@ function SearchForm({ setComments }: any) {
             </select>
           </div>
           <div className="col">
-            <label htmlFor="profile">Perfil de TikTok</label>
+            <label htmlFor="profile">Perfil o Hashtag de TikTok</label>
             <input
               className="form-control"
               id="profile"
@@ -81,7 +95,7 @@ function SearchForm({ setComments }: any) {
             />
           </div>
         </div>
-        <div className="row mt-4">
+        <div className="row justify-content-center mt-4">
           <div className="col-6">
             <label htmlFor="cant">Cantidad de videos a explorar</label>
             <input
@@ -97,9 +111,9 @@ function SearchForm({ setComments }: any) {
           </div>
         </div>
         <div className="row justify-content-center mt-4">
-          <div className="col-6">
+          <div className="col-auto">
             {!load ? (
-              <button type="submit" className="btn btn-primary btn-lg">
+              <button type="submit" className="btn btn-dark">
                 Scrapp
               </button>
             ) : (
@@ -155,7 +169,7 @@ function TableDown({ comments }: { comments: Comment[] }) {
 
   return (
     <>
-      <div className="btn-group" role="group">
+      <div className="btn-group btn-group-lg" role="group">
         <button type="button" className="btn btn-light" onClick={downloadJson}>
           <i className="bi bi-filetype-json"></i>
         </button>
@@ -163,8 +177,12 @@ function TableDown({ comments }: { comments: Comment[] }) {
           <i className="bi bi-filetype-csv"></i>
         </button>
       </div>
-      <div>
-        <Table comments={comments} />
+      <div className="mt-4">
+        {comments.length > 0 ? (
+          <Table comments={comments} />
+        ) : (
+          <h6>Aun no hay comentarios</h6>
+        )}
       </div>
     </>
   );
@@ -178,14 +196,15 @@ function Table({ comments }: { comments: Comment[] }) {
   const filasVisibles = comments.slice(inicio, inicio + porPagina);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 bg-light">
       <div className="table-responsive">
-        <table className="table table-bordered">
+        <table className="table table-striped">
           <thead>
             <tr>
+              <th>#</th>
               <th>Id video</th>
               <th>Usuario</th>
-              <th>Comentario</th>
+              <th style={{ minWidth: "300px" }}>Comentario</th>
               <th>Fecha</th>
               <th>Likes</th>
               <th>Media</th>
@@ -194,6 +213,7 @@ function Table({ comments }: { comments: Comment[] }) {
           <tbody>
             {filasVisibles.map((c, i) => (
               <tr key={inicio + i}>
+                <td>{i + 1}</td>
                 <td>{c.video_id}</td>
                 <td>{c.user}</td>
                 <td>{c.comment}</td>
@@ -205,7 +225,7 @@ function Table({ comments }: { comments: Comment[] }) {
           </tbody>
         </table>
       </div>
-      <nav>
+      <nav className="mt-4">
         <ul className="pagination justify-content-center">
           <li className={`page-item ${paginaActual === 1 ? "disabled" : ""}`}>
             <button
