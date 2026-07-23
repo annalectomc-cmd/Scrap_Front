@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import type { Comment } from "./types/comment";
+import { getComments } from "./services/api";
 
 function App() {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -36,32 +37,20 @@ function SearchForm({ setComments }: any) {
     sendProfile();
   };
 
-  function sendProfile() {
-    //despliegue
-    //fetch(`/comments?profile=${encodeURIComponent(profile)}`)
-    // desarrollo
-    setLoad(true);
-    alert("No cierre el navegador");
-    fetch(
-      `http://localhost:5000/comments?profile=${encodeURIComponent(profile)}&cant=${encodeURIComponent(Number(cant))}&type=${encodeURIComponent(Number(type))}`,
-    )
-      .then(async (response) => {
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.message);
-        }
-        return data;
-      })
-      .then((data) => {
-        setComments(data);
-        setLoad(false);
-        alert("fin");
-      })
-      .catch((err) => {
-        console.log(err.message);
-        alert(err.message);
-        setLoad(false);
-      });
+  async function sendProfile() {
+    
+    try{
+      setLoad(true);
+      alert("No cierre el navegador");
+      const data = await getComments(profile, cant, type);
+      setComments(data);
+      setLoad(false);
+      alert("Busqueda finalizada");
+    } catch (error) {
+      console.log(error);
+      alert(error);
+      setLoad(false);
+    }
   }
 
   return (
