@@ -30,6 +30,7 @@ function SearchForm({ setComments }: any) {
   const [type, setType] = useState("1");
   const [profile, setProfile] = useState("");
   const [cant, setCant] = useState("");
+  const [scroll, setScroll] = useState("");
   const [load, setLoad] = useState(false);
 
   const handleSubmit = (e: any) => {
@@ -42,7 +43,7 @@ function SearchForm({ setComments }: any) {
     try{
       setLoad(true);
       alert("No cierre el navegador");
-      const data = await getComments(profile, cant, type);
+      const data = await getComments(profile, cant, type, scroll);
       setComments(data);
       setLoad(false);
       alert("Busqueda finalizada");
@@ -94,6 +95,19 @@ function SearchForm({ setComments }: any) {
               placeholder="1"
               value={cant}
               onChange={(e) => setCant(e.target.value)}
+              required
+              min="1"
+            />
+          </div>
+          <div className="col-6">
+            <label htmlFor="scroll">Cantidad de scrolls por video</label>
+            <input
+              className="form-control"
+              id="scroll"
+              type="number"
+              placeholder="1"
+              value={scroll}
+              onChange={(e) => setScroll(e.target.value)}
               required
               min="1"
             />
