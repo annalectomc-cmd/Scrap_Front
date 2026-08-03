@@ -1,0 +1,365 @@
+/* =========================
+   PÁGINA COMPLETA
+========================= */
+
+.login-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background-image: url("/src/assets/Fondo1.1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+/* Capa oscura encima del fondo */
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(255, 255, 255, .11);
+    backdrop-filter: blur(1px);
+}
+
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.login-container {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 460px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.login-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.login-header h1 {
+
+    margin: 0;
+
+    font-size: 72px;
+    font-weight: 700;
+
+    color: #1c1c1c;
+
+    letter-spacing: 3px;
+    line-height: 1;
+}
+
+.login-header p {
+
+    margin-top: 8px;
+
+    font-size: 20px;
+    color: #6dc5d3;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 35px 45px;
+
+    box-shadow:
+
+        0 20px 60px rgba(0, 0, 0, .18);
+
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+.form-label {
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #222;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+
+    margin-bottom: 22px;
+}
+
+.input-group-text {
+
+    background: #f4f4f4;
+    border: 1px solid #d9d9d9;
+}
+
+.form-control {
+
+    height: 58px;
+
+    font-size: 18px;
+
+    border: 1px solid #d9d9d9;
+
+    box-shadow: none;
+}
+
+.form-control:focus {
+
+    border-color: #276EF1;
+    box-shadow: 0 0 0 .15rem rgba(39, 110, 241, .18);
+}
+
+
+/* =========================
+   RECORDARME
+========================= */
+
+.form-check {
+
+    margin: 18px 0 28px;
+}
+
+.form-check-label {
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+.btn-login {
+
+    width: 100%;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #276EF1;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    transition: .30s;
+}
+
+.btn-login:hover {
+
+    background: #1456d8;
+}
+
+
+/* =========================
+   DIVISOR
+========================= */
+
+.login-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 28px 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #d8d8d8;
+}
+
+.login-divider span {
+
+    margin: 0 18px;
+
+    color: #777;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   BOTONES LOGIN
+========================= */
+
+.social-btn {
+
+    width: 100%;
+
+    height: 56px;
+
+    background: white;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    margin-bottom: 14px;
+
+    transition: .2s;
+}
+
+.social-btn:hover {
+
+    background: #f7f7f7;
+}
+
+
+/* =========================
+   LINK
+========================= */
+
+.forgot-password {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    text-decoration: none;
+
+    color: #276EF1;
+
+    font-size: 16px;
+}
+
+.forgot-password:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-height:760px) {
+
+    .login-header h1 {
+
+        font-size: 58px;
+    }
+
+    .login-header p {
+
+        font-size: 18px;
+    }
+
+    .login-card {
+
+        padding: 28px 34px;
+    }
+
+    .form-control {
+
+        height: 52px;
+    }
+
+    .btn-login {
+
+        height: 54px;
+    }
+
+    .social-btn {
+
+        height: 50px;
+    }
+
+}
+
+
+@media(max-width:768px) {
+
+    .login-container {
+
+        max-width: 95%;
+    }
+
+    .login-card {
+
+        padding: 25px;
+    }
+
+    .login-header h1 {
+
+        font-size: 48px;
+    }
+
+    .login-header p {
+
+        font-size: 18px;
+    }
+
+    .form-control {
+
+        font-size: 16px;
+    }
+
+    .btn-login {
+
+        font-size: 18px;
+    }
+
+    .social-btn {
+
+        font-size: 18px;
+    }
+
+}
