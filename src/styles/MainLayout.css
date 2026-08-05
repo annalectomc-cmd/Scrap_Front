@@ -1,0 +1,49 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#eef2f7;
+
+    font-family:Segoe UI, sans-serif;
+
+}
+
+.layout{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100vh;
+
+}
+
+.layout-content{
+
+    display:flex;
+
+    flex:1;
+
+    overflow:hidden;
+
+}
+
+.main-content{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:40px;
+
+    background:#f5f7fb;
+
+}

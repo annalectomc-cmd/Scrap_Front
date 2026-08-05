@@ -2,12 +2,22 @@ import { FaGoogle } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { HiOutlineLockClosed } from "react-icons/hi2";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
 
     const [email, setEmail] = useState("");
-
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+
+        // Por ahora simplemente cambiaremos de página.
+        // Más adelante acá validaremos el usuario.
+
+        navigate("/dashboard");
+
+    };
 
     return (
 
@@ -83,7 +93,10 @@ export default function LoginForm() {
 
             </div>
 
-            <button className="btn btn-primary w-100 login-btn">
+            <button
+                className="btn btn-primary w-100 login-btn"
+                onClick={handleLogin}
+            >
 
                 Iniciar sesión
 
