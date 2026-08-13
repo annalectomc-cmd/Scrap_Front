@@ -15,7 +15,7 @@ export default function LoginForm() {
         // Por ahora simplemente cambiaremos de página.
         // Más adelante acá validaremos el usuario.
 
-        navigate("/dashboard");
+        navigate("/inicio");
 
     };
 
