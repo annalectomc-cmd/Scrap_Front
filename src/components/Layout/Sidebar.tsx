@@ -7,7 +7,7 @@ export default function Sidebar() {
         {
             title: "Inicio",
             icon: "bi-house-door",
-            path: "/dashboard",
+            path: "/inicio",
         },
         {
             title: "Dashboard",

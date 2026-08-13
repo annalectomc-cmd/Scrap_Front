@@ -37,7 +37,7 @@ export default function Navbar() {
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
 
-                        N
+                        U
 
                     </button>
 
@@ -47,7 +47,7 @@ export default function Navbar() {
 
                             <div className="profile-name">
 
-                                Nicolás Neira
+                                Usuario
 
                             </div>
 
