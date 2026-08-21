@@ -1,113 +1,385 @@
-/* =========================
-   PÁGINA COMPLETA
-========================= */
+/* =====================================================
+   LOGIN - PÁGINA PRINCIPAL
+===================================================== */
 
 .login-page {
     position: relative;
+
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 20px;
-
-    background-image: url("/src/assets/Fondo1.1.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     overflow: hidden;
+
+    background:
+        linear-gradient(135deg,
+            #eef7ff 0%,
+            #f5f9ff 45%,
+            #edf4ff 100%);
 }
 
 
-/* Capa oscura encima del fondo */
+/* =====================================================
+   FONDO DE BURBUJAS
+===================================================== */
+
+.bubbles {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   BURBUJA BASE
+===================================================== */
+
+.bubble {
+    position: absolute;
+
+    display: block;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0.55;
+
+    filter: blur(1px);
+
+    animation:
+        floatBubble 12s ease-in-out infinite;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =====================================================
+   COLORES Y TAMAÑOS
+===================================================== */
+
+.bubble-1 {
+    width: 180px;
+    height: 180px;
+
+    background: rgba(255, 0, 0, 0.345);
+
+    left: 5%;
+    top: 10%;
+
+    animation-duration: 15s;
+}
+
+
+.bubble-2 {
+    width: 100px;
+    height: 100px;
+
+    background: rgba(39, 190, 220, 0.749);
+
+    left: 20%;
+    top: 70%;
+
+    animation-duration: 11s;
+
+    animation-delay: -3s;
+}
+
+
+.bubble-3 {
+    width: 240px;
+    height: 240px;
+
+    background: rgba(0, 68, 255, 0.491);
+
+    right: 5%;
+    top: 8%;
+
+    animation-duration: 17s;
+
+    animation-delay: -5s;
+}
+
+
+.bubble-4 {
+    width: 70px;
+    height: 70px;
+
+    background: rgba(234, 255, 0, 0.22);
+
+    right: 25%;
+    top: 65%;
+
+    animation-duration: 10s;
+
+    animation-delay: -2s;
+}
+
+
+.bubble-5 {
+    width: 140px;
+    height: 140px;
+
+    background: rgba(233, 9, 218, 0.15);
+
+    left: 40%;
+    top: 5%;
+
+    animation-duration: 14s;
+
+    animation-delay: -6s;
+}
+
+
+.bubble-6 {
+    width: 55px;
+    height: 55px;
+
+    background: rgba(0, 170, 255, 0.25);
+
+    left: 8%;
+    bottom: 15%;
+
+    animation-duration: 9s;
+
+    animation-delay: -1s;
+}
+
+
+.bubble-7 {
+    width: 210px;
+    height: 210px;
+
+    background: rgba(39, 110, 241, 0.10);
+
+    right: 15%;
+    bottom: -50px;
+
+    animation-duration: 18s;
+
+    animation-delay: -8s;
+}
+
+
+.bubble-8 {
+    width: 85px;
+    height: 85px;
+
+    background: rgba(76, 201, 240, 0.18);
+
+    left: 50%;
+    bottom: 10%;
+
+    animation-duration: 13s;
+
+    animation-delay: -4s;
+}
+
+
+.bubble-9 {
+    width: 130px;
+    height: 130px;
+
+    background: rgba(72, 149, 239, 0.13);
+
+    right: 40%;
+    top: 35%;
+
+    animation-duration: 16s;
+
+    animation-delay: -7s;
+}
+
+
+.bubble-10 {
+    width: 45px;
+    height: 45px;
+
+    background: rgba(0, 200, 255, 0.25);
+
+    right: 7%;
+    bottom: 20%;
+
+    animation-duration: 8s;
+
+    animation-delay: -2s;
+}
+
+.bubble-11 {
+    width: 45px;
+    height: 45px;
+
+    background: rgba(26, 255, 0, 0.25);
+
+    right: 7%;
+    bottom: 20%;
+
+    animation-duration: 8s;
+
+    animation-delay: -2s;
+}
+
+
+
+
+/* =====================================================
+   ANIMACIÓN
+===================================================== */
+
+@keyframes floatBubble {
+
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate3d(25px, -35px, 0) scale(1.05);
+    }
+
+    50% {
+        transform: translate3d(-20px, -70px, 0) scale(0.95);
+    }
+
+    75% {
+        transform: translate3d(30px, -30px, 0) scale(1.03);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   CAPA SUAVE
+===================================================== */
 
 .background-overlay {
     position: absolute;
+
     inset: 0;
 
-    background: rgba(255, 255, 255, .11);
-    backdrop-filter: blur(1px);
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.35));
+
+    pointer-events: none;
 }
 
 
-/* =========================
-   CONTENEDOR PRINCIPAL
-========================= */
+/* =====================================================
+   CONTENEDOR LOGIN
+===================================================== */
 
 .login-container {
+
     position: relative;
-    z-index: 2;
+
+    z-index: 3;
 
     width: 100%;
+
     max-width: 460px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
+    padding: 20px;
 }
 
 
-/* =========================
-   LOGO
-========================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .login-header {
+
     text-align: center;
+
     margin-bottom: 22px;
 }
+
 
 .login-header h1 {
 
     margin: 0;
 
-    font-size: 72px;
-    font-weight: 700;
+    font-size: 64px;
 
-    color: #1c1c1c;
+    font-weight: 800;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+
     line-height: 1;
+
+    color: #171717;
 }
+
 
 .login-header p {
 
-    margin-top: 8px;
+    margin-top: 10px;
+
+    margin-bottom: 0;
 
     font-size: 20px;
-    color: #6dc5d3;
+
+    color: #276EF1;
+
+    font-weight: 500;
 }
 
 
-/* =========================
+/* =====================================================
    CARD
-========================= */
+===================================================== */
 
 .login-card {
 
     width: 100%;
 
-    background: white;
+    background: rgba(255, 255, 255, 0.96);
 
-    border-radius: 28px;
+    border-radius: 24px;
 
-    padding: 35px 45px;
+    padding: 32px 40px;
 
     box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15);
 
-        0 20px 60px rgba(0, 0, 0, .18);
+    text-align: left;
 
+    box-sizing: border-box;
+
+    backdrop-filter: blur(8px);
 }
 
 
-/* =========================
+/* =====================================================
    LABELS
-========================= */
+===================================================== */
 
-.form-label {
+.login-card h5 {
 
     font-size: 18px;
+
     font-weight: 700;
 
     color: #222;
@@ -116,100 +388,118 @@
 }
 
 
-/* =========================
+/* =====================================================
    INPUTS
-========================= */
+===================================================== */
 
 .input-group {
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
+
 
 .input-group-text {
 
-    background: #f4f4f4;
-    border: 1px solid #d9d9d9;
+    background: #f8f9fa;
+
+    border: 1px solid #d9dfe7;
 }
+
 
 .form-control {
 
-    height: 58px;
+    height: 56px;
 
     font-size: 18px;
 
-    border: 1px solid #d9d9d9;
+    border: 1px solid #d9dfe7;
 
     box-shadow: none;
 }
 
+
 .form-control:focus {
 
     border-color: #276EF1;
-    box-shadow: 0 0 0 .15rem rgba(39, 110, 241, .18);
+
+    box-shadow:
+        0 0 0 0.15rem rgba(39, 110, 241, 0.18);
 }
 
 
-/* =========================
+/* =====================================================
    RECORDARME
-========================= */
+===================================================== */
 
 .form-check {
 
-    margin: 18px 0 28px;
+    margin: 16px 0 24px;
 }
+
 
 .form-check-label {
 
     font-size: 17px;
+
+    color: #222;
 }
 
 
-/* =========================
-   BOTÓN
-========================= */
+/* =====================================================
+   BOTÓN LOGIN
+===================================================== */
 
-.btn-login {
+.login-btn {
 
     width: 100%;
 
-    height: 60px;
+    height: 56px;
 
     border: none;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     background: #276EF1;
 
     color: white;
 
-    font-size: 22px;
+    font-size: 20px;
 
     font-weight: 600;
 
-    transition: .30s;
+    transition: all 0.25s ease;
 }
 
-.btn-login:hover {
+
+.login-btn:hover {
 
     background: #1456d8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(39, 110, 241, 0.25);
 }
 
 
-/* =========================
+/* =====================================================
    DIVISOR
-========================= */
+===================================================== */
 
-.login-divider {
+.divider {
 
     display: flex;
 
     align-items: center;
 
-    margin: 28px 0;
+    width: 100%;
+
+    margin: 25px 0;
 }
 
-.login-divider::before,
-.login-divider::after {
+
+.divider::before,
+.divider::after {
 
     content: "";
 
@@ -217,149 +507,211 @@
 
     height: 1px;
 
-    background: #d8d8d8;
+    background: #d5d9df;
 }
 
-.login-divider span {
 
-    margin: 0 18px;
+.divider span {
+
+    padding: 0 15px;
 
     color: #777;
 
-    font-size: 17px;
+    font-size: 16px;
+
+    white-space: nowrap;
 }
 
 
-/* =========================
-   BOTONES LOGIN
-========================= */
+/* =====================================================
+   BOTONES SOCIALES
+===================================================== */
 
 .social-btn {
 
     width: 100%;
 
-    height: 56px;
+    height: 54px;
 
     background: white;
 
-    border: 1px solid #cfcfcf;
+    border: 1px solid #cfd4dc;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
-    font-size: 20px;
+    font-size: 18px;
 
     font-weight: 500;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
-    transition: .2s;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition: all 0.2s ease;
 }
+
 
 .social-btn:hover {
 
-    background: #f7f7f7;
+    background: #f7f9fc;
+
+    border-color: #aeb5c0;
 }
 
 
-/* =========================
-   LINK
-========================= */
+/* =====================================================
+   RECUPERAR CONTRASEÑA
+===================================================== */
 
-.forgot-password {
-
-    display: block;
+.forgot {
 
     text-align: center;
 
-    margin-top: 20px;
+    margin-top: 14px;
+}
+
+
+.forgot a {
 
     text-decoration: none;
 
     color: #276EF1;
 
-    font-size: 16px;
+    font-size: 15px;
 }
 
-.forgot-password:hover {
+
+.forgot a:hover {
 
     text-decoration: underline;
 }
 
 
-/* =========================
+/* =====================================================
    RESPONSIVE
-========================= */
+===================================================== */
 
-@media(max-height:760px) {
-
-    .login-header h1 {
-
-        font-size: 58px;
-    }
-
-    .login-header p {
-
-        font-size: 18px;
-    }
-
-    .login-card {
-
-        padding: 28px 34px;
-    }
-
-    .form-control {
-
-        height: 52px;
-    }
-
-    .btn-login {
-
-        height: 54px;
-    }
-
-    .social-btn {
-
-        height: 50px;
-    }
-
-}
-
-
-@media(max-width:768px) {
+@media (max-width: 768px) {
 
     .login-container {
 
-        max-width: 95%;
+        max-width: 94%;
+
+        padding: 15px;
     }
 
-    .login-card {
-
-        padding: 25px;
-    }
 
     .login-header h1 {
 
         font-size: 48px;
+
+        letter-spacing: 3px;
     }
+
 
     .login-header p {
 
         font-size: 18px;
     }
 
+
+    .login-card {
+
+        padding: 28px 25px;
+
+        border-radius: 20px;
+    }
+
+
     .form-control {
+
+        height: 52px;
 
         font-size: 16px;
     }
 
-    .btn-login {
+
+    .login-btn {
+
+        height: 52px;
 
         font-size: 18px;
     }
+
 
     .social-btn {
 
-        font-size: 18px;
+        height: 50px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* =====================================================
+   PANTALLAS BAJAS
+===================================================== */
+
+@media (max-height: 760px) {
+
+    .login-header {
+
+        margin-bottom: 14px;
     }
 
+
+    .login-header h1 {
+
+        font-size: 50px;
+    }
+
+
+    .login-header p {
+
+        font-size: 17px;
+
+        margin-top: 6px;
+    }
+
+
+    .login-card {
+
+        padding: 24px 32px;
+    }
+
+
+    .input-group {
+
+        margin-bottom: 14px;
+    }
+
+
+    .form-check {
+
+        margin: 12px 0 18px;
+    }
+
+
+    .divider {
+
+        margin: 18px 0;
+    }
+
+
+    .login-btn {
+
+        height: 50px;
+    }
+
+
+    .social-btn {
+
+        height: 48px;
+    }
 }
