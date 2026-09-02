@@ -1,103 +1,542 @@
-/* src/Styles/reportes.css */
+/* =========================================================
+   CONTENEDOR GENERAL
+   ========================================================= */
 
 .reportes-container {
-  max-width: 1200px;
+    min-height: 100%;
+    background: #f5f7fb;
 }
 
+
+/* =========================================================
+   ENCABEZADO PRINCIPAL
+   ========================================================= */
+
+.reportes-container > .mb-4 h1 {
+    color: #142f4f;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.reportes-container > .mb-4 p {
+    color: #64748b !important;
+    font-size: 17px;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TARJETA PRINCIPAL DEL REPORTE
+   ========================================================= */
+
 .report-card-main {
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-  padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e1e8f0;
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 4px 14px rgba(20, 50, 90, 0.04),
+        0 1px 3px rgba(20, 50, 90, 0.03);
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.report-card-main:hover {
+    box-shadow:
+        0 8px 24px rgba(20, 50, 90, 0.07),
+        0 2px 5px rgba(20, 50, 90, 0.04);
+}
+
+
+/* =========================================================
+   ENCABEZADO DEL REPORTE
+   ========================================================= */
+
+.report-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 26px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #edf1f5;
 }
 
 .report-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1e293b;
+    margin: 0;
+
+    color: #142f4f;
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Tarjetas internas del layout (2x2 y Panel de Descargas) */
+.report-project-name {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   BADGE DE PLATAFORMA
+   ========================================================= */
+
+.report-platform-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 13px;
+
+    border-radius: 8px;
+
+    background: #1769ff;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TARJETAS DE ESTADÍSTICAS
+   ========================================================= */
+
 .stat-box {
-  background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), 0 4px 6px rgba(0,0,0,0.03);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 120px;
+    height: 100%;
+    min-height: 150px;
+
+    padding: 22px 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce5ef;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
-.downloads-box {
-  background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), 0 4px 6px rgba(0,0,0,0.03);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.stat-box:hover {
+    border-color: #cbd8e7;
+
+    box-shadow: 0 5px 16px rgba(20, 50, 90, 0.05);
+
+    transform: translateY(-1px);
 }
+
+
+/* =========================================================
+   LABEL DE LAS ESTADÍSTICAS
+   ========================================================= */
 
 .stat-label {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 6px;
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 8px;
 }
+
+
+/* =========================================================
+   VALOR DE LAS ESTADÍSTICAS
+   ========================================================= */
 
 .stat-value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #0f172a;
+    color: #142f4f;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    line-height: 1.2;
 }
 
-/* Estilos de botones estilo boceto */
+
+/* =========================================================
+   ESTADO COMPLETADO
+   ========================================================= */
+
+.stat-value.text-success {
+    color: #15966d !important;
+
+    font-size: 23px;
+}
+
+
+/* =========================================================
+   BOTÓN EJECUTAR
+   ========================================================= */
+
 .btn-sketch-action {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  padding: 8px 16px;
-  transition: all 0.2s ease;
+    margin-top: 8px;
+
+    border: 1px solid #1769ff !important;
+    border-radius: 8px !important;
+
+    background: #ffffff !important;
+    color: #1769ff !important;
+
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    padding: 7px 14px !important;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .btn-sketch-action:hover {
-  background-color: #1d4ed8;
-  color: white;
-  transform: translateY(-1px);
+    background: #1769ff !important;
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
 }
 
-.btn-sketch-download {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  padding: 12px 16px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-  transition: all 0.2s ease;
+
+/* =========================================================
+   PANEL DE DESCARGAS
+   ========================================================= */
+
+.downloads-box {
+    width: 100%;
+    height: 100%;
+
+    min-height: 150px;
+
+    border: 1px solid #dce5ef;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 14px rgba(20, 50, 90, 0.04);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.btn-sketch-download:hover {
-  background-color: #2563eb;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+.downloads-box:hover {
+    border-color: #cbd8e7;
+
+    box-shadow: 0 6px 18px rgba(20, 50, 90, 0.06);
 }
 
-.download-arrow {
-  color: #94a3b8;
-  font-size: 1.2rem;
-  margin: 4px 0;
+
+/* =========================================================
+   HEADER DEL PANEL DE DESCARGAS
+   ========================================================= */
+
+.downloads-header {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 22px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: background 0.2s ease;
+}
+
+.downloads-header:hover {
+    background: #f8fafc;
+}
+
+.downloads-header-left {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   ICONO PRINCIPAL DE DESCARGAS
+   ========================================================= */
+
+.downloads-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 10px;
+
+    background: #eef4ff;
+    color: #1769ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TÍTULO DESCARGAS
+   ========================================================= */
+
+.downloads-title {
+    color: #17365d;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.downloads-subtitle {
+    margin-top: 3px;
+
+    color: #7b8794;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CHEVRON
+   ========================================================= */
+
+.downloads-chevron {
+    color: #64748b;
+
+    font-size: 18px;
+
+    transition: transform 0.2s ease;
+}
+
+
+/* =========================================================
+   CONTENIDO DESPLEGABLE
+   ========================================================= */
+
+.downloads-content {
+    padding: 8px 12px 12px;
+
+    border-top: 1px solid #e8edf3;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   OPCIONES DE DESCARGA
+   ========================================================= */
+
+.download-option {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+
+    padding: 13px 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.download-option:hover {
+    background: #f5f8fc;
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   ICONOS DE ARCHIVOS
+   ========================================================= */
+
+.download-option-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 9px;
+
+    background: #f1f5f9;
+    color: #1769ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE ARCHIVO
+   ========================================================= */
+
+.download-option-info {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 12px;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.download-option-title {
+    color: #17365d;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.download-option-description {
+    margin-top: 2px;
+
+    color: #8a96a3;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ICONO DE DESCARGA
+   ========================================================= */
+
+.download-option-arrow {
+    color: #6b7c93;
+
+    font-size: 16px;
+
+    margin-left: 10px;
+
+    transition: color 0.2s ease;
+}
+
+.download-option:hover .download-option-arrow {
+    color: #1769ff;
+}
+
+
+/* =========================================================
+   MENSAJE SIN REPORTES
+   ========================================================= */
+
+.reportes-container .alert {
+    border-radius: 12px;
+
+    border: 1px solid #dbe7f5;
+
+    box-shadow: 0 3px 10px rgba(20, 50, 90, 0.03);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .report-card-main {
+        padding: 22px;
+    }
+
+    .report-heading {
+        align-items: flex-start;
+    }
+
+    .downloads-box {
+        min-height: auto;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .reportes-container > .mb-4 h1 {
+        font-size: 34px;
+    }
+
+    .reportes-container > .mb-4 p {
+        font-size: 15px;
+    }
+
+    .report-card-main {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .report-heading {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .report-title {
+        font-size: 24px;
+    }
+
+    .stat-box {
+        min-height: 130px;
+
+        padding: 18px;
+    }
+
+    .stat-value {
+        font-size: 23px;
+    }
+
+    .downloads-header {
+        padding: 18px;
+    }
 }
