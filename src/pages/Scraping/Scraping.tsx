@@ -6,6 +6,8 @@ import ProgressCard from "../../components/scraping/ProgressCard";
 import ResultsCard from "../../components/scraping/ResultsCard";
 
 import { executeScraping } from "../../services/scraping/service";
+import { useNotifications } from "../../context/NotificationsContext";
+import { mapScrapingError } from "../../utils/scrapingErrors";
 import type {
   Platform,
   ProgressState,
@@ -16,6 +18,7 @@ import type {
 
 export default function Scraping() {
   const [platform, setPlatform] = useState<Platform>("tiktok");
+  const { notifySuccess, notifyError } = useNotifications();
 
   // Cargar estado inicial guardado en sesión si existe
   const [progress, setProgress] = useState<ProgressState>(() => {
@@ -66,6 +69,7 @@ export default function Scraping() {
   const handleExecute = async (config: ScrapingConfig) => {
     setResults(null);
     const startTime = performance.now();
+    const cleanTarget = config.target.replace(/^@/, "");
 
     const newProgress: ProgressState = {
       percentage: 20,
@@ -81,6 +85,7 @@ export default function Scraping() {
 
     try {
       const data = await executeScraping(config);
+
       const endTime = performance.now();
       const durationSeconds = ((endTime - startTime) / 1000).toFixed(1) + "s";
       const uniqueVideos = new Set(data.map((item) => item.video_id)).size;
@@ -106,8 +111,13 @@ export default function Scraping() {
       };
       setResults(finalResults);
 
+      notifySuccess(
+        "Scraping completado",
+        `${cleanTarget} · ${data.length} comentarios extraídos de ${config.platform}`,
+        { link: "/reportes", linkLabel: "Ver reporte" }
+      );
+
       if (config.saveProject) {
-        const cleanTarget = config.target.replace(/^@/, "");
         const newReport: ReportItem = {
           id: Date.now().toString(),
           projectName: cleanTarget,
@@ -129,16 +139,48 @@ export default function Scraping() {
         );
       }
     } catch (err: any) {
+      const status = err?.response?.status ?? err?.status;
+      const info = mapScrapingError(err, status);
+
       setProgress({
         percentage: 100,
         status: "error",
-        message: err.message || "Error durante la ejecución",
+        message: err.message || info.message,
         logs: [
           `Plataforma seleccionada: ${config.platform}`,
           `Buscando: ${config.target}`,
           `ERROR: ${err.message || "No se pudo completar el proceso."}`,
         ],
       });
+
+      notifyError(
+        "El scraping falló",
+        `${cleanTarget} · ${info.message}`,
+        { hint: info.hint }
+      );
+
+      if (config.saveProject) {
+        const cleanTargetSave = cleanTarget;
+        const failedReport: ReportItem = {
+          id: Date.now().toString(),
+          projectName: cleanTargetSave,
+          platform: config.platform,
+          target: cleanTargetSave,
+          date: new Date().toLocaleDateString("es-ES"),
+          commentsCount: 0,
+          status: "Error",
+          data: [],
+          config: config,
+        };
+
+        const existingReports: ReportItem[] = JSON.parse(
+          localStorage.getItem("reports") || "[]"
+        );
+        localStorage.setItem(
+          "reports",
+          JSON.stringify([failedReport, ...existingReports])
+        );
+      }
     }
   };
 
