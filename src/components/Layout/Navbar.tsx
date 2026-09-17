@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NotificationBell from "../notifications/NotificationBell";
 import "../../styles/Navbar.css";
 
 export default function Navbar() {
@@ -24,11 +25,9 @@ export default function Navbar() {
 
             <div className="navbar-right">
 
-                <button className="icon-button">
+                {/* NOTIFICACIONES */}
 
-                    <i className="bi bi-bell"></i>
-
-                </button>
+                <NotificationBell />
 
                 <div className="profile-container">
 
