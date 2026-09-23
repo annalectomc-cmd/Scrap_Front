@@ -71,6 +71,7 @@ export default function Reportes() {
     const [query, setQuery] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [highlight, setHighlight] = useState(-1);
+    const [deleteTarget, setDeleteTarget] = useState<ReportItem | null>(null);
 
     const searchRef = useRef<HTMLDivElement>(null);
 
@@ -94,6 +95,17 @@ export default function Reportes() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    /* Cerrar el modal de confirmación con Escape */
+    useEffect(() => {
+        if (!deleteTarget) return;
+
+        function handleEscape(event: KeyboardEvent) {
+            if (event.key === "Escape") setDeleteTarget(null);
+        }
+        document.addEventListener("keydown", handleEscape);
+        return () => document.removeEventListener("keydown", handleEscape);
+    }, [deleteTarget]);
 
     /* =========================================================
        FILTRADO
@@ -198,6 +210,27 @@ export default function Reportes() {
         setQuery("");
         setIsOpen(false);
         setHighlight(-1);
+    }
+
+    /* =========================================================
+       ELIMINAR PROYECTO
+       ========================================================= */
+
+    function requestDelete(report: ReportItem) {
+        setDeleteTarget(report);
+    }
+
+    function cancelDelete() {
+        setDeleteTarget(null);
+    }
+
+    function confirmDelete() {
+        if (!deleteTarget) return;
+
+        const updated = reports.filter((r) => r.id !== deleteTarget.id);
+        setReports(updated);
+        localStorage.setItem("reports", JSON.stringify(updated));
+        setDeleteTarget(null);
     }
 
     /* =========================================================
@@ -421,9 +454,21 @@ export default function Reportes() {
                                             </div>
                                         </div>
 
-                                        <span className="report-platform-badge">
-                                            {platform}
-                                        </span>
+                                        <div className="report-heading-right">
+                                            <span className="report-platform-badge">
+                                                {platform}
+                                            </span>
+
+                                            <button
+                                                type="button"
+                                                className="btn-delete-report"
+                                                title="Eliminar proyecto"
+                                                aria-label={`Eliminar ${report.projectName}`}
+                                                onClick={() => requestDelete(report)}
+                                            >
+                                                <i className="bi bi-trash3"></i>
+                                            </button>
+                                        </div>
                                     </div>
 
                                     {/* CUERPO DE LA TARJETA */}
@@ -516,6 +561,63 @@ export default function Reportes() {
                     )}
                 </>
             )}
+
+            {/* MODAL DE CONFIRMACIÓN DE ELIMINACIÓN */}
+            {deleteTarget && (
+                <div
+                    className="delete-modal-overlay"
+                    role="presentation"
+                    onClick={cancelDelete}
+                >
+                    <div
+                        className="delete-modal"
+                        role="alertdialog"
+                        aria-modal="true"
+                        aria-labelledby="delete-modal-title"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="delete-modal-icon">
+                            <i className="bi bi-exclamation-triangle-fill"></i>
+                        </div>
+
+                        <h3 id="delete-modal-title">¿Eliminar este proyecto?</h3>
+
+                        <p>
+                            Vas a eliminar{" "}
+                            <strong>{deleteTarget.projectName}</strong>. Esta
+                            acción no se puede deshacer.
+                        </p>
+
+                        <div className="delete-modal-actions">
+                            <button
+                                type="button"
+                                className="delete-modal-btn delete-modal-btn-danger"
+                                onClick={confirmDelete}
+                                autoFocus
+                            >
+                                <i className="bi bi-trash3"></i>
+                                Sí, eliminar
+                            </button>
+
+                            <button
+                                type="button"
+                                className="delete-modal-btn delete-modal-btn-neutral"
+                                onClick={cancelDelete}
+                            >
+                                No
+                            </button>
+
+                            <button
+                                type="button"
+                                className="delete-modal-btn delete-modal-btn-ghost"
+                                onClick={cancelDelete}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+}       

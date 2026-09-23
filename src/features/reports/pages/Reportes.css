@@ -511,6 +511,49 @@
 
 
 /* =========================================================
+   ACCIONES DEL ENCABEZADO (badge + eliminar)
+   ========================================================= */
+
+.report-heading-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.btn-delete-report {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+
+    border: 1px solid var(--border-soft);
+    border-radius: 9px;
+    background: #ffffff;
+
+    color: var(--muted);
+    font-size: 14.5px;
+
+    transition: background 0.15s ease, color 0.15s ease,
+        border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-delete-report:hover {
+    background: var(--danger-soft);
+    border-color: var(--danger);
+    color: var(--danger);
+    transform: translateY(-1px);
+}
+
+.btn-delete-report:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
    CUERPO DE LA TARJETA
    ========================================================= */
 
@@ -677,6 +720,157 @@
 
 
 /* =========================================================
+   MODAL DE CONFIRMACIÓN DE ELIMINACIÓN
+   ========================================================= */
+
+.delete-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    background: rgba(15, 26, 42, 0.5);
+    backdrop-filter: blur(2px);
+
+    animation: delete-overlay-in 0.15s ease both;
+}
+
+.delete-modal {
+    width: 100%;
+    max-width: 380px;
+
+    padding: 30px 28px 26px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow:
+        0 24px 60px rgba(15, 26, 42, 0.25),
+        0 4px 14px rgba(15, 26, 42, 0.08);
+
+    text-align: center;
+
+    animation: delete-modal-in 0.18s ease both;
+}
+
+.delete-modal-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.delete-modal h3 {
+    color: var(--navy);
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.delete-modal p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.delete-modal p strong {
+    color: var(--navy);
+}
+
+.delete-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.delete-modal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 11px 16px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: background 0.15s ease, transform 0.15s ease,
+        box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.delete-modal-btn-danger {
+    background: var(--danger);
+    color: #ffffff;
+}
+
+.delete-modal-btn-danger:hover {
+    background: #a52d25;
+    box-shadow: 0 8px 18px rgba(192, 54, 44, 0.28);
+    transform: translateY(-1px);
+}
+
+.delete-modal-btn-neutral {
+    background: #eef2f7;
+    color: var(--navy);
+}
+
+.delete-modal-btn-neutral:hover {
+    background: #e2e8f0;
+}
+
+.delete-modal-btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--muted);
+}
+
+.delete-modal-btn-ghost:hover {
+    background: var(--bg);
+    color: var(--navy);
+}
+
+@keyframes delete-overlay-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes delete-modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .delete-modal-overlay,
+    .delete-modal {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
    ACCESIBILIDAD — FOCO VISIBLE
    ========================================================= */
 
@@ -685,7 +879,9 @@
 .suggestion-item:focus-visible,
 .reportes-search-clear:focus-visible,
 .reportes-results-clear:focus-visible,
-.reportes-search input:focus-visible {
+.reportes-search input:focus-visible,
+.btn-delete-report:focus-visible,
+.delete-modal-btn:focus-visible {
     outline: 2px solid var(--blue);
     outline-offset: 2px;
 }
@@ -751,7 +947,7 @@
         gap: 14px;
     }
 
-    .report-platform-badge {
+    .report-heading-right {
         align-self: flex-start;
     }
 
