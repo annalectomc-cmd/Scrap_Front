@@ -5,12 +5,12 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Login from "./pages/Login/Login";
-import Inicio from "./pages/inicio/Inicio";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Scraping from "./pages/scraping/Scraping";
-import Reportes from "./pages/reportes/Reportes";
-import MainLayout from "./layouts/MainLayout";
+import Login from "./features/auth/pages/login/Login";
+import Inicio from "./features/home/pages/Inicio";
+import Dashboard from "./features/dashboard/pages/Dashboard";
+import Scraping from "./features/scraping/pages/Scraping";
+import Reportes from "./features/reports/pages/Reportes";
+import MainLayout from "./layout/MainLayout";
 
 function App() {
 

@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 import App from "./App";
-import { NotificationsProvider } from "./context/NotificationsContext";
+import { NotificationsProvider } from "./features/notifications/context/NotificationsContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";

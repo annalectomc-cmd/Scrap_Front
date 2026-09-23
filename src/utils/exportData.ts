@@ -1,5 +1,5 @@
 // utils/exportData.ts
-import type { CommentItem } from "../types/scraping";
+import type { CommentItem } from "../features/scraping/types/scraping";
 
 export function downloadJSON(data: CommentItem[], filename = "comentarios.json") {
   const jsonStr = JSON.stringify(data, null, 2);
