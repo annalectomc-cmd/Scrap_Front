@@ -1,0 +1,196 @@
+.navbar{
+
+    height:85px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+    border-bottom:1px solid #ececec;
+
+    box-shadow:0 1px 8px rgba(0,0,0,.05);
+
+}
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.icon-button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f4f6fb;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.icon-button:hover{
+
+    background:#2d6cdf;
+
+    color:white;
+
+}
+
+.icon-button i{
+
+    font-size:18px;
+
+}
+
+.profile-container{
+
+    position:relative;
+    
+    margin-right:20px;
+
+
+}
+
+.profile-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#2d6cdf;
+
+    color:white;
+    
+    font-weight:700;
+
+    font-size:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.profile-avatar:hover{
+
+    transform:scale(1.05);
+
+}
+
+.profile-menu{
+
+    position:absolute;
+
+    right:0;
+
+    top:55px;
+
+    width:210px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    animation:fade .2s ease;
+
+    z-index:999;
+
+}
+
+.profile-name{
+
+    padding:18px;
+
+    font-weight:600;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.logout-button{
+
+    width:100%;
+
+    border:none;
+
+    background:white;
+
+    padding:15px 18px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    transition:.3s;
+
+}
+
+.logout-button:hover{
+
+    background:#f3f6fb;
+
+    color:#2d6cdf;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
