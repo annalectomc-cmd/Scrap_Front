@@ -1,0 +1,83 @@
+.scraping-title {
+    color: var(--text-color);
+}
+
+.scraping-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+/* ===== Cards (ConfigCard, ProgressCard, ResultsCard) ===== */
+
+.scraping-page .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.scraping-page .card-title {
+    color: var(--text-color);
+}
+
+.scraping-page .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* ===== Formulario (ConfigCard) ===== */
+
+.scraping-page .form-label {
+    color: var(--text-color);
+}
+
+.scraping-page .form-control {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.scraping-page .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.scraping-page .form-control:focus {
+    background-color: var(--bg-secondary);
+    border-color: #2d6cdf;
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.15rem rgba(45, 108, 223, 0.18);
+}
+
+.scraping-page .form-control:disabled {
+    background-color: var(--bg-secondary);
+    opacity: 0.6;
+}
+
+.scraping-page .form-check-label {
+    color: var(--text-color);
+}
+
+/* ===== Barra de progreso (ProgressCard) ===== */
+
+.scraping-page .progress {
+    background-color: var(--bg-secondary);
+}
+
+/* ===== Resultados (ResultsCard) ===== */
+
+.scraping-page .border {
+    border-color: var(--border-color) !important;
+}
+
+.scraping-page .btn-outline-secondary {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.scraping-page .btn-outline-secondary:hover:not(:disabled) {
+    background-color: var(--hover-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.scraping-page .btn-outline-danger:hover {
+    background-color: #fbeae8;
+    color: #c0362c;
+}

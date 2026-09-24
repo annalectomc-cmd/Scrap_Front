@@ -8,6 +8,7 @@ import ResultsCard from "../components/ResultsCard";
 import { executeScraping } from "../services/service";
 import { useNotifications } from "../../notifications/context/NotificationsContext";
 import { mapScrapingError } from "../../../utils/scrapingErrors";
+import "./Scraping.css";
 import type {
   Platform,
   ProgressState,
@@ -185,10 +186,10 @@ export default function Scraping() {
   };
 
   return (
-    <div className="container-fluid px-4 py-4">
+    <div className="container-fluid px-4 py-4 scraping-page">
       <div className="mb-4">
-        <h1 className="fw-bold">Scraping</h1>
-        <p className="text-muted">
+        <h1 className="fw-bold scraping-title">Scraping</h1>
+        <p className="scraping-subtitle">
           Configura y ejecuta un nuevo proyecto de scraping.
         </p>
       </div>
