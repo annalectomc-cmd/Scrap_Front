@@ -12,7 +12,45 @@ body,
     overflow: hidden;
 }
 
-body{
-    font-family: 'Segoe UI',sans-serif;
-    background:#f5f7fb;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #eef2f7;
+  --bg-secondary: #f5f7fb;
+  --text-color: #152238;
+  --text-secondary: #5b677a;
+  --text-muted: #6b7483;
+  --card-bg: #ffffff;
+  --border-color: #ececec;
+  --border-color-soft: #f1f5f9;
+  --sidebar-bg: #ffffff;
+  --navbar-bg: #ffffff;
+  --hover-bg: #edf3ff;
+  --active-bg: #dce9ff;
+  --shadow-color: rgba(35, 75, 130, 0.08);
+  --shadow-color-strong: rgba(0, 0, 0, 0.08);
+  --logo-color: #17386e;
+
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #242835;
+  --bg-secondary: #2b2f3d;
+  --text-color: #e8e6e1;
+  --text-secondary: #b0aeb8;
+  --text-muted: #8f8d98;
+  --card-bg: #2f3342;
+  --border-color: #3d4152;
+  --border-color-soft: #363a49;
+  --sidebar-bg: #262a37;
+  --navbar-bg: #262a37;
+  --hover-bg: #333a52;
+  --active-bg: #2c3a5c;
+  --logo-color: #7ba1ff;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --shadow-color-strong: rgba(0, 0, 0, 0.35);
 }
